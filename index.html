@@ -23,7 +23,7 @@
 
     <!-- 1. BÌA: phong bì -->
     <section class="cover" id="cover">
-      <h1 class="title reveal in">
+      <h1 class="title">
         <span class="script">Graduation</span>
         <span class="caps">INVITATION</span>
       </h1>
@@ -33,13 +33,39 @@
         <div class="letter">
           <div class="letter-inner">
             <p class="caps small">THƯƠNG MỜI</p>
+            <p class="guest" id="guest">bạn</p>
             <p class="serif">tham dự lễ tốt nghiệp của</p>
             <p class="script name" data-bind="name"></p>
           </div>
         </div>
-        <div class="env-front"></div>
-        <div class="env-flap"></div>
-        <div class="seal"><span data-bind="initials"></span></div>
+        <div class="env-front">
+          <svg viewBox="0 0 160 110" aria-hidden="true">
+            <polygon points="0,0 83,61 0,110" fill="url(#gSide)"/>
+            <polygon points="160,0 77,61 160,110" fill="url(#gSide2)"/>
+            <polygon points="0,110 80,57 160,110" fill="url(#gBottom)"/>
+          </svg>
+        </div>
+        <div class="env-flap">
+          <svg viewBox="0 0 160 110" aria-hidden="true">
+            <defs>
+              <linearGradient id="gFlap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1b8c3"/><stop offset="1" stop-color="#e7a0ae"/></linearGradient>
+              <linearGradient id="gSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e99fae"/><stop offset="1" stop-color="#eeadb9"/></linearGradient>
+              <linearGradient id="gSide2" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#e599a9"/><stop offset="1" stop-color="#ecaab6"/></linearGradient>
+              <linearGradient id="gBottom" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#e8a2b0"/><stop offset="1" stop-color="#f0b4c0"/></linearGradient>
+              <linearGradient id="gHeart" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#f8e2da"/><stop offset=".45" stop-color="#e8bfb4"/><stop offset="1" stop-color="#c99487"/></linearGradient>
+            </defs>
+            <polygon points="0,0 160,0 80,68" fill="url(#gFlap)"/>
+            <g class="lace-g" id="lace"></g>
+          </svg>
+        </div>
+        <div class="seal">
+          <svg viewBox="0 0 100 90" aria-hidden="true">
+            <path d="M50 88C20 66 2 48 2 28 2 12 14 2 28 2c10 0 18 6 22 14 4-8 12-14 22-14 14 0 26 10 26 26 0 20-18 38-48 60z" fill="url(#gHeart)"/>
+            <path d="M50 76C27 59 13 45 13 30c0-11 8-18 17-18 8 0 14 5 20 13 6-8 12-13 20-13 9 0 17 7 17 18 0 15-14 29-37 46z" fill="none" stroke="#b98377" stroke-opacity=".55" stroke-width="2.2"/>
+            <path d="M50 76C27 59 13 45 13 30c0-11 8-18 17-18 8 0 14 5 20 13 6-8 12-13 20-13 9 0 17 7 17 18 0 15-14 29-37 46z" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1" transform="translate(-.8 -.8)"/>
+          </svg>
+          <span data-bind="initials"></span>
+        </div>
         <figure class="polaroid">
           <img data-src="photoSmall" alt="">
           <figcaption data-bind="name"></figcaption>
@@ -52,10 +78,10 @@
 
     <!-- 2. THIỆP CHÍNH -->
     <section class="section" id="card">
-      <div class="paper reveal">
+      <div class="paper reveal stagger">
         <div class="clip" aria-hidden="true"></div>
-        <div class="bow" aria-hidden="true">🎀</div>
-        <h2 class="caps big">GRADUATION <span class="cap-hat">🎓</span></h2>
+        <img class="bow bow-img" src="images/bow-pink.png" alt="" aria-hidden="true">
+        <h2 class="caps big">GRADUATI<span class="o-hat">O<span class="cap-hat" aria-hidden="true">🎓</span></span>N</h2>
         <p class="script name xl" data-bind="name"></p>
         <p class="quote" data-bind="quote"></p>
 
@@ -68,10 +94,11 @@
 
         <p class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           Thời gian: <span data-bind="time"></span></p>
+        <p class="row time2" data-bind="time2"></p>
         <p class="row strong"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
           <span data-bind="venue"></span></p>
         <p class="addr" data-bind="address"></p>
-        <span class="lily l1" aria-hidden="true">🌸</span>
+        <img class="lily l1 flower-img" src="images/flower-cluster.png" alt="" aria-hidden="true">
         <span class="lily l2" aria-hidden="true">💮</span>
       </div>
     </section>
@@ -79,12 +106,13 @@
     <!-- 3. CHỈ ĐƯỜNG -->
     <section class="section" id="location">
       <h2 class="script heading reveal">Location Guide</h2>
-      <div class="lace reveal">
-        <span class="pin" aria-hidden="true">📌</span>
+      <div class="lace reveal stagger">
+        <img class="pin pin-img" src="images/pin-pink.png" alt="" aria-hidden="true">
         <p class="caps venue" data-bind="venue"></p>
         <div class="map"><iframe id="map" title="Bản đồ" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
         <a class="link" id="directions" target="_blank" rel="noopener">Chỉ đường</a>
         <p class="serif lg">Lúc <span data-bind="time"></span></p>
+        <p class="serif time2-loc" data-bind="time2"></p>
         <p class="serif lg" data-bind="dateShort"></p>
       </div>
     </section>
@@ -92,9 +120,9 @@
     <!-- 4. LIÊN HỆ -->
     <section class="section" id="contact">
       <h2 class="script heading reveal">Contact me</h2>
-      <div class="lace contact reveal">
+      <div class="lace contact reveal stagger">
         <div class="contact-info">
-          <p class="c-row"><span class="ic phone">✆</span> Gọi vào số: <a data-bind="phone" id="phone"></a></p>
+          <p class="c-row phones-row"><span class="ic phone">✆</span> <span>Gọi vào số:</span> <span class="phones" id="phones"></span></p>
           <p class="or">Hoặc liên hệ qua</p>
           <p class="c-row"><span class="ic fb">f</span> <a id="fb" target="_blank" rel="noopener" data-bind="facebookName"></a></p>
           <p class="c-row"><span class="ic zalo">Zalo</span> <a id="zalo" target="_blank" rel="noopener" data-bind="zaloName"></a></p>
@@ -104,25 +132,60 @@
       </div>
     </section>
 
-    <!-- 5. XÁC NHẬN THAM DỰ -->
-    <section class="section" id="rsvp">
-      <h2 class="vn-script heading reveal">Xác nhận<br>tham dự</h2>
-      <form class="form reveal" id="rsvpForm">
-        <label>Tên của bạn
-          <input name="name" required autocomplete="name">
-        </label>
-        <fieldset>
-          <legend>Bạn sẽ đến tham dự chứ?</legend>
-          <label class="opt"><input type="radio" name="attend" value="Tớ chắc chắn đến" required><span>Tớ chắc chắn đến 🥰</span></label>
-          <label class="opt"><input type="radio" name="attend" value="Mình bận mất rồi"><span>Mình bận mất rồi 🥲</span></label>
-        </fieldset>
-        <label>Lời nhắn đến mình nha
-          <textarea name="message" rows="3"></textarea>
-        </label>
-        <button type="submit">Xác nhận</button>
-        <p class="thanks" id="thanks" hidden>Cảm ơn bạn đã phản hồi! 💖</p>
-      </form>
+    <!-- 4a. ĐẾM NGƯỢC + LÁ THƯ -->
+    <section class="section" id="countdown">
+      <div class="cd-panel">
+        <h2 class="caps cd-title reveal">COUNTDOWN</h2>
+        <div class="cd reveal" id="cd" aria-live="off">
+          <div class="cd-u"><span class="cd-n" data-u="d">00</span><span class="cd-l">Ngày</span></div>
+          <span class="cd-sep">:</span>
+          <div class="cd-u"><span class="cd-n" data-u="h">00</span><span class="cd-l">Giờ</span></div>
+          <span class="cd-sep">:</span>
+          <div class="cd-u"><span class="cd-n" data-u="m">00</span><span class="cd-l">Phút</span></div>
+          <span class="cd-sep">:</span>
+          <div class="cd-u"><span class="cd-n" data-u="s">00</span><span class="cd-l">Giây</span></div>
+        </div>
+        <p class="cd-done" id="cdDone" hidden>Hôm nay là ngày tốt nghiệp của mình! 🎓</p>
+
+        <svg class="gold-cap" viewBox="0 0 120 100" aria-hidden="true">
+          <defs>
+            <linearGradient id="gcTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6df9a"/><stop offset=".5" stop-color="#ddb35a"/><stop offset="1" stop-color="#b98a33"/></linearGradient>
+            <linearGradient id="gcBase" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b78631"/><stop offset=".5" stop-color="#e3bf6c"/><stop offset="1" stop-color="#a87a2a"/></linearGradient>
+          </defs>
+          <path d="M34 46 L36 66 C46 74 74 74 84 66 L86 46 Z" fill="url(#gcBase)"/>
+          <path d="M60 18 L114 40 L60 62 L6 40 Z" fill="url(#gcTop)" stroke="#a87a2a" stroke-width="1"/>
+          <circle cx="60" cy="40" r="3" fill="#a87a2a"/>
+          <path d="M60 40 C80 44 96 48 100 54 L100 78" fill="none" stroke="#c99a40" stroke-width="2"/>
+          <path d="M96 76 L104 76 L106 94 L94 94 Z" fill="#d9ad55"/>
+        </svg>
+
+        <article class="note-paper reveal stagger" id="noteLetter"></article>
+      </div>
     </section>
+
+    <!-- 4b. ALBUM ẢNH -->
+    <section class="section" id="album">
+      <div class="album-panel">
+        <div class="album-head">
+          <figure class="album-cover reveal from-left"><img data-src="albumCover" alt="Ảnh tốt nghiệp"></figure>
+          <div class="album-year reveal from-right" aria-label="Graduate Album">
+            <span class="num n1" id="yearA">20</span>
+            <span class="script w1">Graduate</span>
+            <span class="num n2" id="yearB">26</span>
+            <span class="script w2">Album</span>
+          </div>
+        </div>
+        <div class="album-grid" id="albumGrid"></div>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lb-close" aria-label="Đóng">×</button>
+      <button class="lb-prev" aria-label="Ảnh trước">‹</button>
+      <img alt="">
+      <button class="lb-next" aria-label="Ảnh sau">›</button>
+    </div>
+
 
     <footer class="foot">Made with 💗 · <span data-bind="dateShort"></span></footer>
   </main>
