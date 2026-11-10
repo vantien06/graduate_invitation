@@ -1,26 +1,136 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Graduation Invitation</title>
-  <style>
-    :root { --bg: #fdf8f0; --ink: #2b2b2b; --accent: #b8860b; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh; display: grid; place-items: center;
-      background: var(--bg); color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif; padding: 16px; text-align: center;
-    }
-    .card { max-width: 520px; padding: 48px 32px; border: 2px solid var(--accent); border-radius: 12px; }
-    h1 { color: var(--accent); margin: 0 0 12px; font-size: 2rem; }
-    p { margin: 0; font-size: 1.1rem; line-height: 1.6; }
-  </style>
+  <meta name="description" content="Thư mời tham dự lễ tốt nghiệp">
+  <meta property="og:title" content="Graduation Invitation">
+  <meta property="og:description" content="Thương mời bạn tham dự lễ tốt nghiệp của mình 🎓">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@500;700&family=Playfair+Display:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap&subset=vietnamese" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-  <main class="card">
-    <h1>🎓 Graduation Invitation</h1>
-    <p>Coming soon — details will be posted here shortly.</p>
+<body class="locked">
+  <!-- Nền: hoa, sao, cánh hoa rơi -->
+  <div class="bg" aria-hidden="true">
+    <div class="bloom b1"></div><div class="bloom b2"></div><div class="bloom b3"></div><div class="bloom b4"></div>
+    <div class="sky" id="sky"></div>
+  </div>
+
+  <main class="page">
+
+    <!-- 1. BÌA: phong bì -->
+    <section class="cover" id="cover">
+      <h1 class="title reveal in">
+        <span class="script">Graduation</span>
+        <span class="caps">INVITATION</span>
+      </h1>
+
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Mở thiệp">
+        <div class="env-back"></div>
+        <div class="letter">
+          <div class="letter-inner">
+            <p class="caps small">THƯƠNG MỜI</p>
+            <p class="serif">tham dự lễ tốt nghiệp của</p>
+            <p class="script name" data-bind="name"></p>
+          </div>
+        </div>
+        <div class="env-front"></div>
+        <div class="env-flap"></div>
+        <div class="seal"><span data-bind="initials"></span></div>
+        <figure class="polaroid">
+          <img data-src="photoSmall" alt="">
+          <figcaption data-bind="name"></figcaption>
+        </figure>
+      </div>
+
+      <p class="hint" id="hint">Chạm để mở thiệp ✉</p>
+      <a class="scroll-down" href="#card" aria-label="Xem tiếp">⌄</a>
+    </section>
+
+    <!-- 2. THIỆP CHÍNH -->
+    <section class="section" id="card">
+      <div class="paper reveal">
+        <div class="clip" aria-hidden="true"></div>
+        <div class="bow" aria-hidden="true">🎀</div>
+        <h2 class="caps big">GRADUATION <span class="cap-hat">🎓</span></h2>
+        <p class="script name xl" data-bind="name"></p>
+        <p class="quote" data-bind="quote"></p>
+
+        <div class="oval">
+          <span class="d" data-bind="day"></span>
+          <span class="m" data-bind="month"></span>
+          <span class="y" data-bind="year"></span>
+          <span class="flower" aria-hidden="true">🌸</span>
+        </div>
+
+        <p class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          Thời gian: <span data-bind="time"></span></p>
+        <p class="row strong"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span data-bind="venue"></span></p>
+        <p class="addr" data-bind="address"></p>
+        <span class="lily l1" aria-hidden="true">🌸</span>
+        <span class="lily l2" aria-hidden="true">💮</span>
+      </div>
+    </section>
+
+    <!-- 3. CHỈ ĐƯỜNG -->
+    <section class="section" id="location">
+      <h2 class="script heading reveal">Location Guide</h2>
+      <div class="lace reveal">
+        <span class="pin" aria-hidden="true">📌</span>
+        <p class="caps venue" data-bind="venue"></p>
+        <div class="map"><iframe id="map" title="Bản đồ" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <a class="link" id="directions" target="_blank" rel="noopener">Chỉ đường</a>
+        <p class="serif lg">Lúc <span data-bind="time"></span></p>
+        <p class="serif lg" data-bind="dateShort"></p>
+      </div>
+    </section>
+
+    <!-- 4. LIÊN HỆ -->
+    <section class="section" id="contact">
+      <h2 class="script heading reveal">Contact me</h2>
+      <div class="lace contact reveal">
+        <div class="contact-info">
+          <p class="c-row"><span class="ic phone">✆</span> Gọi vào số: <a data-bind="phone" id="phone"></a></p>
+          <p class="or">Hoặc liên hệ qua</p>
+          <p class="c-row"><span class="ic fb">f</span> <a id="fb" target="_blank" rel="noopener" data-bind="facebookName"></a></p>
+          <p class="c-row"><span class="ic zalo">Zalo</span> <a id="zalo" target="_blank" rel="noopener" data-bind="zaloName"></a></p>
+          <p class="note">Sự hiện diện của mọi người sẽ là niềm vui và niềm vinh dự lớn nhất đối với mình!</p>
+        </div>
+        <img class="portrait" data-src="photoPortrait" alt="Ảnh tốt nghiệp">
+      </div>
+    </section>
+
+    <!-- 5. XÁC NHẬN THAM DỰ -->
+    <section class="section" id="rsvp">
+      <h2 class="vn-script heading reveal">Xác nhận<br>tham dự</h2>
+      <form class="form reveal" id="rsvpForm">
+        <label>Tên của bạn
+          <input name="name" required autocomplete="name">
+        </label>
+        <fieldset>
+          <legend>Bạn sẽ đến tham dự chứ?</legend>
+          <label class="opt"><input type="radio" name="attend" value="Tớ chắc chắn đến" required><span>Tớ chắc chắn đến 🥰</span></label>
+          <label class="opt"><input type="radio" name="attend" value="Mình bận mất rồi"><span>Mình bận mất rồi 🥲</span></label>
+        </fieldset>
+        <label>Lời nhắn đến mình nha
+          <textarea name="message" rows="3"></textarea>
+        </label>
+        <button type="submit">Xác nhận</button>
+        <p class="thanks" id="thanks" hidden>Cảm ơn bạn đã phản hồi! 💖</p>
+      </form>
+    </section>
+
+    <footer class="foot">Made with 💗 · <span data-bind="dateShort"></span></footer>
   </main>
+
+  <button class="music" id="musicBtn" hidden aria-label="Bật/tắt nhạc">♫</button>
+  <audio id="bgm" loop preload="none"></audio>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
