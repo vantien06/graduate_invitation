@@ -2,7 +2,7 @@
 window.INVITE = {
   name: "Thùy Linh",            // tên hiển thị (chữ viết tay)
   initials: "TL",               // chữ trên con dấu sáp
-  defaultGuest: "bạn",          // hiện khi link không có ?to=Tên
+  defaultGuest: "cả nhà iu",    // hiện khi link không có tên người nhận (khi đó ẩn số điện thoại)
   quote: "I hope you can be a part of my beautiful youth",
 
   day: "17",

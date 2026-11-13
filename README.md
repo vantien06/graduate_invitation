@@ -51,7 +51,16 @@ Mở `assets/config.js` và sửa trực tiếp:
 
 ### Thêm ảnh album
 
-Bỏ ảnh vào `images/album/` với tên `cover.jpg` (ảnh lớn cạnh chữ "20 26"), `1.jpg`, `2.jpg`, ... rồi liệt kê trong mục `album` của `config.js`. Lưới ảnh lặp lại theo nhóm 6: ảnh số 1, 7, 13… là ô cao, nên chọn ảnh dọc. Ảnh số 6, 12… là ô ngang, nên chọn ảnh ngang.
+Bỏ ảnh vào `images/album/` với tên `cover.jpg` (ảnh lớn cạnh chữ "20 26"), `1.jpg`, `2.jpg`, ... rồi liệt kê trong mục `album` của `config.js`. Lưới ảnh lặp lại theo nhóm 6, ảnh dọc luôn hiển thị **2:3**, ảnh ngang luôn **3:2**:
+
+| Ảnh số | Vị trí | Khổ | Cắt sẵn ví dụ |
+|---|---|---|---|
+| 1, 7, 13… | Cột trái, ô cao | Dọc 2:3 | 800×1200 |
+| 2, 3, 8, 9… | Cột phải, hai ô xếp chồng | Ngang 3:2 | 1200×800 |
+| 4, 5, 10, 11… | Hai ô cạnh nhau | Dọc 2:3 | 800×1200 |
+| 6, 12… | Rộng hết hàng | Ngang 3:2 | 1200×800 |
+
+Ảnh bìa `cover.jpg` (cạnh chữ "20 26") là dọc 2:3.
 
 Nên nén ảnh xuống chiều rộng khoảng 1000–1200px để trang tải nhanh trên điện thoại.
 
@@ -65,8 +74,7 @@ https://thuylinh.tech/?i=VGjDuXkgVHJpbmg   →  "THƯƠNG MỜI Thùy Trinh"
 
 Cách tạo: mở `taolink.html` trên máy, dán danh sách tên (mỗi dòng một tên), bấm **Tạo link** rồi chép từng link.
 
-- Link không có `?i=` sẽ hiện "THƯƠNG MỜI bạn".
-- Link dạng cũ `?to=Tên` vẫn dùng được.
+- Link không có `?i=` (link chung) sẽ hiện "THƯƠNG MỜI cả nhà iu" và **ẩn số điện thoại, Zalo**. Chỉ link có tên người nhận mới hiện số điện thoại và Zalo.
 - Mã hoá chỉ để tên không lộ ra khi nhìn link, không phải để bảo mật.
 
 ## Xem thử trên máy

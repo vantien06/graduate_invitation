@@ -11,7 +11,7 @@
     img.onerror = () => img.classList.add("missing");
     if (src) img.src = src; else img.classList.add("missing");
   });
-  // Tên người nhận lấy từ link: ...?i=<mã base64url>  (vẫn hỗ trợ ?to=Tên)
+  // Tên người nhận lấy từ link: ...?i=<mã base64url>
   const params = new URLSearchParams(location.search);
   const decodeName = code => {
     try {
@@ -20,8 +20,15 @@
       return new TextDecoder().decode(Uint8Array.from(atob(b), c => c.charCodeAt(0)));
     } catch (e) { return ""; }
   };
-  const guest = ((params.get("i") && decodeName(params.get("i"))) || params.get("to") || "").trim().slice(0, 40);
-  document.getElementById("guest").textContent = guest || C.defaultGuest || "bạn";
+  const guest = (params.get("i") ? decodeName(params.get("i")) : "").trim().slice(0, 40);
+  document.getElementById("guest").textContent = guest || C.defaultGuest || "cả nhà iu";
+  // Link chung (không có tên người nhận) thì ẩn số điện thoại và Zalo
+  if (!guest) {
+    document.querySelector(".phones-row").hidden = true;
+    document.getElementById("zalo").closest(".c-row").hidden = true;
+    const or = document.querySelector("#contact .or");
+    if (or) or.textContent = "Liên hệ với mình qua";
+  }
 
   const q = encodeURIComponent(C.mapQuery || C.venue);
   const mq = C.mapCoords ? encodeURIComponent(C.mapCoords) : q;
@@ -29,7 +36,7 @@
   document.getElementById("directions").href = C.mapLink || `https://www.google.com/maps/dir/?api=1&destination=${q}`;
   const fmtPhone = n => n.replace(/\D/g, "").replace(/^(\d{4})(\d{3})(\d+)$/, "$1 $2 $3");
   const phoneBox = document.getElementById("phones");
-  (C.phones || (C.phone ? [C.phone] : [])).forEach(p => {
+  if (guest) (C.phones || (C.phone ? [C.phone] : [])).forEach(p => {
     const n = typeof p === "string" ? p : p.number;
     const line = document.createElement("span");
     line.className = "phone-line";
@@ -93,16 +100,31 @@
     document.getElementById("yearA").textContent = y.slice(0, 2);
     document.getElementById("yearB").textContent = y.slice(2);
     const list = (C.album || []).filter(Boolean);
+    // Mỗi nhóm 6 ảnh: [1 | 2/3 chồng] , [4 | 5] , [6]
+    let r1, stack, r2;
+    const slot = i => {
+      const k = i % 6;
+      if (k === 0) {
+        r1 = document.createElement("div"); r1.className = "alb-r1"; grid.appendChild(r1);
+        stack = document.createElement("div"); stack.className = "alb-stack";
+        return r1;
+      }
+      if (k === 1) { r1.appendChild(stack); return stack; }
+      if (k === 2) return stack;
+      if (k === 3) { r2 = document.createElement("div"); r2.className = "alb-r2"; grid.appendChild(r2); return r2; }
+      if (k === 4) return r2;
+      return grid;
+    };
     list.forEach((src, i) => {
       const f = document.createElement("figure");
-      f.className = "ph";
+      f.className = [1, 2, 5].includes(i % 6) ? "ph wide" : "ph";
       const img = new Image();
       img.alt = "Ảnh " + (i + 1); img.loading = "lazy";
       img.onerror = () => f.classList.add("empty");
       img.src = src;
       f.appendChild(img);
       f.dataset.i = i;
-      grid.appendChild(f);
+      slot(i).appendChild(f);
     });
     const io2 = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return;
