@@ -9,8 +9,8 @@ window.INVITE = {
   month: "Tháng 11",
   year: "2026",
   dateShort: "17.11.2026",
-  time: "11:30 – 12:30",
-  time2: "hoặc 17:00 – 19:00",   // dòng giờ thứ hai (để trống "" nếu không cần)
+  time: "17:00 – 19:00",
+  time2: "",  // dòng giờ thứ hai (để trống "" nếu không cần)
 
   venue: "Nhà hát Hòa Bình",
   address: "240 Đường 3/2, Phường Hòa Hưng, TP.HCM",
@@ -39,12 +39,13 @@ window.INVITE = {
   ],
 
   // Đếm ngược tới lúc bắt đầu lễ (giờ Việt Nam)
-  eventStart: "2026-11-17T11:30:00+07:00",
+  eventStart: "2026-11-17T17:00:00+07:00",
 
   // Lá thư dưới phần đếm ngược — mỗi phần tử là một đoạn
   letter: [
-    "Bốn năm đại học đã khép lại bằng những ngày tháng thật đáng nhớ: những buổi học dài, những mùa thi căng thẳng và cả những niềm vui nhỏ bé mỗi ngày.",
-    "Để đi đến được hôm nay, mình đã có gia đình, thầy cô và các bạn luôn ở bên cạnh. Tấm bằng này không chỉ là kết quả của những cố gắng, mà còn là khởi đầu cho một chặng đường mới. Mình rất mong có bạn cùng chia vui trong ngày đặc biệt này!"
+    "Bốn năm đại học đã khép lại, để lại trong mình biết bao kỷ niệm đáng nhớ. Đó là những ngày miệt mài bên trang sách, những mùa thi đầy áp lực và cả những niềm vui giản dị nhưng đáng quý trong suốt hành trình thanh xuân.",
+    "Để có được ngày hôm nay, mình thật may mắn khi luôn có gia đình, thầy cô và bạn bè bên cạnh, yêu thương, động viên và đồng hành. Tấm bằng tốt nghiệp không chỉ là thành quả của những nỗ lực đã qua, mà còn là dấu mốc mở ra một hành trình mới với nhiều ước mơ và hy vọng.",
+    "Mình rất mong được cùng bạn chia sẻ niềm vui và lưu giữ những khoảnh khắc ý nghĩa trong ngày đặc biệt này!"
   ],
 
   music: "",                    // vd "audio/music.mp3" — để trống nếu không dùng nhạc
